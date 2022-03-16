@@ -69,8 +69,8 @@ public class HomeFragment extends Fragment {
                     String rgbStr = r + " " + g + " " + b;
                     rgbText.setText(rgbStr);
 
-                    String hexStr = Integer.toHexString(rgb);
-                    hexText.setText("#" + hexStr);
+                    String hexStr = "#" + Integer.toHexString(rgb).substring(2);
+                    hexText.setText(hexStr);
                 }
                 return true;
         });
