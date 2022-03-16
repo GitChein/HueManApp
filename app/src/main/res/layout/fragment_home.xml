@@ -20,7 +20,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.728" />
+        app:layout_constraintVertical_bias="0.604" />
 
     <TextView
         android:id="@+id/hexLabel"
@@ -28,19 +28,33 @@
         android:layout_height="30dp"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/colorBox"
+        app:layout_constraintBottom_toTopOf="@+id/nameLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rgbLabel"
-        app:layout_constraintVertical_bias="0.741" />
+        app:layout_constraintVertical_bias="0.25" />
+
+    <TextView
+        android:id="@+id/nameLabel"
+        android:layout_width="387dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="17dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/colorBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hexLabel"
+        app:layout_constraintVertical_bias="0.303" />
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="274dp"
         android:layout_height="272dp"
         android:layout_marginStart="69dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="69dp"
         android:src="@drawable/color_wheel_0"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,10 +68,9 @@
         android:layout_height="67dp"
         android:layout_marginStart="85dp"
         android:layout_marginEnd="85dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="88dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -72,5 +85,5 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image"
-        app:layout_constraintVertical_bias="0.625" />
+        app:layout_constraintVertical_bias="0.524" />
 </androidx.constraintlayout.widget.ConstraintLayout>
