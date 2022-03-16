@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">HueMan</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Color Picker</string>
+    <string name="title_dashboard">Saved</string>
+    <string name="title_notifications">Settings</string>
+    <string name="chose_image">CHANGE IMAGE</string>
 </resources>
