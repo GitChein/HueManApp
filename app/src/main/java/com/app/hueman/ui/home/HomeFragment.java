@@ -80,8 +80,11 @@ public class HomeFragment extends Fragment {
                     String rgbStr = r + " " + g + " " + b;
                     rgbText.setText(rgbStr);
 
-                    String hexStr = "#" + Integer.toHexString(rgb).substring(2);
-                    hexText.setText(hexStr);
+                    String hexStr = Integer.toHexString(rgb);
+;                    if (hexStr.length() > 2) {
+                        hexStr = "#" + hexStr.substring(2);
+                        hexText.setText(hexStr);
+                    }
 
                     String colorName = colorDao.getName(hexStr);
 
@@ -95,14 +98,11 @@ public class HomeFragment extends Fragment {
                 }
                 return true;
         });
-        btnPick.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v){
+        btnPick.setOnClickListener((v) -> {
               Intent intent = new Intent();
               intent.setType("image/*");
               intent.setAction(Intent.ACTION_GET_CONTENT);
               startActivityForResult(Intent.createChooser(intent, "Choose an image"), REQUEST_CODE);
-          }
         });
 
 
