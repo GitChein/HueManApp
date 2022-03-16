@@ -27,6 +27,7 @@ public class HomeFragment extends Fragment {
     Bitmap bm;
 
 
+    @SuppressLint("ClickableViewAccessibility")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -38,9 +39,12 @@ public class HomeFragment extends Fragment {
 
         image.setDrawingCacheEnabled(true);
         image.buildDrawingCache(true);
-        image.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
+        image.setOnTouchListener((view, motionEvent) -> {
+                if (motionEvent.getX() < 0 || motionEvent.getY() < 0 ||
+                    motionEvent.getX() >= view.getWidth() || motionEvent.getY() >= view.getHeight()) {
+                    return true;
+                }
+
                 if (motionEvent.getAction() == MotionEvent.ACTION_DOWN ||
                     motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
                     bm = image.getDrawingCache();
@@ -51,10 +55,10 @@ public class HomeFragment extends Fragment {
 
                     colorBox.setBackgroundColor(Color.rgb(r, g, b));
 
-                    rgbText.setText(r + " " + g + " " + b);
+                    String rgbStr = r + " " + g + " " + b;
+                    rgbText.setText(rgbStr);
                 }
                 return true;
-            }
         });
 
 
