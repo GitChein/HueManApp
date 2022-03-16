@@ -25,7 +25,8 @@ public abstract class ColorRoomDatabase extends RoomDatabase {
             synchronized (ColorRoomDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            ColorRoomDatabase.class, "color_database")
+                            ColorRoomDatabase.class, "color_db")
+                            .createFromAsset("colors.db")
                             .build();
                 }
             }
