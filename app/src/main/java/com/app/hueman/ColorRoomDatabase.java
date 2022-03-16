@@ -9,7 +9,9 @@ import androidx.room.RoomDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Color.class}, version = 1, exportSchema = false)
+@Database(entities = {Color.class},
+        version = 3,
+        exportSchema = true)
 public abstract class ColorRoomDatabase extends RoomDatabase {
 
     public abstract ColorDao colorDao();
@@ -20,14 +22,17 @@ public abstract class ColorRoomDatabase extends RoomDatabase {
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
-    static ColorRoomDatabase getDatabase(final Context context) {
+    public static ColorRoomDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (ColorRoomDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            ColorRoomDatabase.class, "color_db")
-                            .createFromAsset("colors.db")
+                            ColorRoomDatabase.class, "cdb")
+                            .fallbackToDestructiveMigration()
+                            .createFromAsset("Color.db")
+                            .allowMainThreadQueries()
                             .build();
+
                 }
             }
         }

@@ -6,7 +6,8 @@ import androidx.room.Query;
 @Dao
 public interface ColorDao {
 
-    @Query("SELECT color_name FROM color WHERE hex LIKE :in_hex")
+    @Query("SELECT name FROM Colors WHERE hex == :in_hex LIMIT 1")
     String getName(String in_hex);
+
 
 }

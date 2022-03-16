@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -13,8 +14,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
+import com.app.hueman.ColorDao;
+import com.app.hueman.ColorRoomDatabase;
 import com.app.hueman.R;
 import com.app.hueman.databinding.FragmentHomeBinding;
 
@@ -24,10 +26,11 @@ public class HomeFragment extends Fragment {
     ImageView image;
     TextView rgbText;
     TextView hexText;
+    TextView nameText;
     TextView colorBox;
     Bitmap bm;
-
-
+    ColorRoomDatabase cdb;
+    ColorDao colorDao;
     @SuppressLint("ClickableViewAccessibility")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -37,7 +40,14 @@ public class HomeFragment extends Fragment {
         image = root.findViewById(R.id.image);
         rgbText = root.findViewById(R.id.rgbLabel);
         hexText = root.findViewById(R.id.hexLabel);
+        nameText = root.findViewById(R.id.nameLabel);
         colorBox = root.findViewById(R.id.colorBox);
+
+        cdb = ColorRoomDatabase.getDatabase(getContext());
+        Log.i("color_db", String.valueOf(getContext()));
+        colorDao = cdb.colorDao();
+
+
 
         image.setDrawingCacheEnabled(true);
         image.buildDrawingCache(true);
@@ -60,8 +70,18 @@ public class HomeFragment extends Fragment {
                     String rgbStr = r + " " + g + " " + b;
                     rgbText.setText(rgbStr);
 
-                    String hexStr = Integer.toHexString(rgb);
-                    hexText.setText("#" + hexStr);
+                    String hexStr = "#" + (Integer.toHexString(rgb)).substring(2);
+                    hexText.setText(hexStr);
+
+                    String colorName = colorDao.getName(hexStr);
+
+                    if (colorName != null) {
+                        nameText.setText(colorName);
+                    }
+                    else{
+                        nameText.setText("Name not found");
+                    }
+
                 }
                 return true;
         });

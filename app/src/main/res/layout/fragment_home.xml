@@ -30,8 +30,24 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/colorBox"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgbLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/rgbLabel"
+        app:layout_constraintVertical_bias="0.139" />
+
+    <TextView
+        android:id="@+id/nameLabel"
+        android:layout_width="392dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="17dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/colorBox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hexLabel"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/image"
@@ -51,8 +67,9 @@
         android:layout_height="67dp"
         android:layout_marginStart="85dp"
         android:layout_marginEnd="85dp"
-        android:layout_marginBottom="93dp"
+        android:layout_marginBottom="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
