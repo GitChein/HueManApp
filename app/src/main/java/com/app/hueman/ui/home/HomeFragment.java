@@ -23,6 +23,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     ImageView image;
     TextView rgbText;
+    TextView hexText;
     TextView colorBox;
     Bitmap bm;
 
@@ -35,6 +36,7 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
         image = root.findViewById(R.id.image);
         rgbText = root.findViewById(R.id.rgbLabel);
+        hexText = root.findViewById(R.id.hexLabel);
         colorBox = root.findViewById(R.id.colorBox);
 
         image.setDrawingCacheEnabled(true);
@@ -57,6 +59,9 @@ public class HomeFragment extends Fragment {
 
                     String rgbStr = r + " " + g + " " + b;
                     rgbText.setText(rgbStr);
+
+                    String hexStr = Integer.toHexString(rgb);
+                    hexText.setText("#" + hexStr);
                 }
                 return true;
         });
