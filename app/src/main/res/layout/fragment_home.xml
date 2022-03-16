@@ -66,7 +66,7 @@
         android:layout_height="52dp"
         android:layout_marginStart="112dp"
         android:layout_marginEnd="112dp"
-        android:text="Change Image"
+        android:text="@string/chose_image"
         app:layout_constraintBottom_toTopOf="@+id/rgbLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
