@@ -114,6 +114,7 @@ public class HomeFragment extends Fragment {
       if(reqCode == REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null){
         Uri imageData = data.getData();
         image.setImageURI(imageData);
+        bm = image.getDrawingCache();
       }
     }
 
