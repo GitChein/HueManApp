@@ -19,7 +19,6 @@ import android.app.Activity;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.annotation.Nullable;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.app.hueman.ColorCategorizer;
 import com.app.hueman.ColorDao;
@@ -34,9 +33,9 @@ public class HomeFragment extends Fragment {
     private static final int REQUEST_CODE = 123;
     Button btnPick;
     ImageView image;
-    TextView rgbText;
     TextView hexText;
     TextView nameText;
+    TextView typeText;
     TextView colorBox;
     Bitmap bm;
     ColorRoomDatabase cdb;
@@ -51,9 +50,9 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
         image = root.findViewById(R.id.image);
         btnPick = root.findViewById(R.id.btnPick);
-        rgbText = root.findViewById(R.id.rgbLabel);
         hexText = root.findViewById(R.id.hexLabel);
         nameText = root.findViewById(R.id.nameLabel);
+        typeText = root.findViewById(R.id.typeLabel);
         colorBox = root.findViewById(R.id.colorBox);
 
         cdb = ColorRoomDatabase.getDatabase(getContext());
@@ -78,9 +77,7 @@ public class HomeFragment extends Fragment {
                     int b = Color.blue(rgb);
 
                     colorBox.setBackgroundColor(Color.rgb(r, g, b));
-
-                    String rgbStr = r + " " + g + " " + b;
-                    rgbText.setText(rgbStr);
+                    typeText.setText(ColorCategorizer.getColorCategory(r,g,b));
 
                     String hexStr = Integer.toHexString(rgb);
                     if (hexStr.length() > 2) {
@@ -93,8 +90,8 @@ public class HomeFragment extends Fragment {
                         nameText.setText(colorName);
                     }
                     else{
-//                        nameText.setText("Name not found");
-                        nameText.setText(ColorCategorizer.getColorCategory(r,g,b));
+                        nameText.setText("Name not found");
+
                     }
 
                 }
