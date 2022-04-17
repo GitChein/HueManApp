@@ -76,7 +76,7 @@ public class ColorCategorizer {
     }
     public static int[] hsvToRgb(float hue, float saturation, float value) {
 
-        int h = (int)(hue * 6);
+        int h = (int)(hue/360 * 6);
         float f = hue * 6 - h;
         float p = value * (1 - saturation);
         float q = value * (1 - f * saturation);
@@ -120,7 +120,7 @@ public class ColorCategorizer {
 
         int[][] pallete = {
                 {(int) r, (int) g, (int) b},
-                hsvToRgb(h, 0.10f, 0.10f),
+                hsvToRgb(h, 0.30f, 0.30f),
                 hsvToRgb(h, 0.50f, 0.50f),
                 hsvToRgb(h, 0.60f, 0.75f),
                 hsvToRgb(h, 0.90f, 0.90f)

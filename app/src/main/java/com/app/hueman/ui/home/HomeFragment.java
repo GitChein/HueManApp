@@ -23,6 +23,7 @@ import androidx.annotation.Nullable;
 import com.app.hueman.ColorCategorizer;
 import com.app.hueman.ColorDao;
 import com.app.hueman.ColorRoomDatabase;
+import com.app.hueman.DisplayPaletteActivity;
 import com.app.hueman.R;
 import com.app.hueman.databinding.FragmentHomeBinding;
 
@@ -51,6 +52,7 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
         image = root.findViewById(R.id.image);
         btnPick = root.findViewById(R.id.btnPick);
+        btnPalettes = (Button) root.findViewById(R.id.paletteGeneratorButton);
         hexText = root.findViewById(R.id.hexLabel);
         nameText = root.findViewById(R.id.nameLabel);
         typeText = root.findViewById(R.id.typeLabel);
@@ -93,7 +95,6 @@ public class HomeFragment extends Fragment {
                     else{
                         nameText.setText("Name not found");
                     }
-
                 }
                 return true;
         });
@@ -102,6 +103,14 @@ public class HomeFragment extends Fragment {
               intent.setType("image/*");
               intent.setAction(Intent.ACTION_GET_CONTENT);
               startActivityForResult(Intent.createChooser(intent, "Choose an image"), REQUEST_CODE);
+        });
+
+        btnPalettes.setOnClickListener((v) -> {
+            Intent intent = new Intent(v.getContext(), DisplayPaletteActivity.class);
+            TextView hex = (TextView) root.findViewById(R.id.hexLabel);
+            String message = hex.getText().toString();
+            intent.putExtra("key", message);
+            startActivity(intent);
         });
 
 
