@@ -288,4 +288,51 @@
         app:layout_constraintHorizontal_bias="0.358"
         app:layout_constraintStart_toEndOf="@+id/pNameLabel"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/saveBtn1"
+        android:layout_width="191dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="44dp"
+        android:text="Save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p15" />
+
+    <Button
+        android:id="@+id/saveBtn2"
+        android:layout_width="191dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="56dp"
+        android:text="Save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p25" />
+
+    <Button
+        android:id="@+id/saveBtn3"
+        android:layout_width="191dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:text="Save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p35" />
+
+    <Button
+        android:id="@+id/saveBtn4"
+        android:layout_width="191dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="36dp"
+        android:text="Save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p45" />
+
+    <Button
+        android:id="@+id/Back"
+        android:layout_width="191dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:text="Back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/saveBtn4" />
 </androidx.constraintlayout.widget.ConstraintLayout>
