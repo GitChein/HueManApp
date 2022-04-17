@@ -1,5 +1,10 @@
 package com.app.hueman;
 
+import androidx.core.graphics.ColorUtils;
+
+import java.util.Vector;
+
+
 public class ColorCategorizer {
     static float[] getHSLvalues(float r, float g, float b) {
         // convert RGB to HSL
@@ -69,4 +74,122 @@ public class ColorCategorizer {
         if (h < 345) return "Pink";
         return "Red";
     }
+    public static int[] hsvToRgb(float hue, float saturation, float value) {
+
+        int h = (int)(hue * 6);
+        float f = hue * 6 - h;
+        float p = value * (1 - saturation);
+        float q = value * (1 - f * saturation);
+        float t = value * (1 - (1 - f) * saturation);
+
+        switch (h) {
+            case 0: return rgbToArray(value, t, p);
+            case 1: return rgbToArray(q, value, p);
+            case 2: return rgbToArray(p, value, t);
+            case 3: return rgbToArray(p, q, value);
+            case 4: return rgbToArray(t, p, value);
+            case 5: return rgbToArray(value, p, q);
+            default: throw new RuntimeException("Something went wrong when converting from HSV to RGB. Input was " + hue + ", " + saturation + ", " + value);
+        }
+    }
+
+    public static int[] rgbToArray(float r, float g, float b) {
+        int rs = (int)(r * 256);
+        int gs = (int)(g * 256);
+        int bs = (int)(b * 256);
+        int[] rgb = {rs, gs, bs};
+        return rgb;
+    }
+
+    public static int[][][] getColorPalettes(float r, float g, float b) {
+        int[][][] palettes = {
+                getMonochromatic(r,g,b),
+                getAnalogous(r,g,b),
+                getComplementaryDichromatic(r,g,b),
+                getSplitTrichromatic(r,g,b)
+        };
+        return palettes;
+    }
+
+    private static int[][] getMonochromatic(float r, float g, float b){
+        // hsl values
+        // for monochromatic we just change saturation and lightness
+        // we want a darker muted
+        float[] hsl = getHSLvalues(r, g, b);
+        float h = hsl[0];
+
+        int[][] pallete = {
+                {(int) r, (int) g, (int) b},
+                hsvToRgb(h, 0.10f, 0.10f),
+                hsvToRgb(h, 0.50f, 0.50f),
+                hsvToRgb(h, 0.60f, 0.75f),
+                hsvToRgb(h, 0.90f, 0.90f)
+        };
+
+        return pallete;
+        // for monochromatic we just change saturation and lightness
+        // we want a darker muted
+    }
+
+    private static int[][] getComplementaryDichromatic(float r, float g, float b){
+        // hsl values
+        // for monochromatic we just change saturation and lightness
+        // we want a darker muted
+        float[] hsl = getHSLvalues(r, g, b);
+        float h = hsl[0];
+
+        int[][] pallete = {
+                {(int) r, (int) g, (int) b},
+                hsvToRgb(h, 0.60f, 0.80f),
+                hsvToRgb(h, 0.50f, 0.45f),
+                hsvToRgb((h+180)%360, 0.80f, 0.80f),
+                hsvToRgb((h+180)%360, 0.75f, 0.60f)
+        };
+
+        return pallete;
+        // for monochromatic we just change saturation and lightness
+        // we want a darker muted
+    }
+
+    private static int[][] getSplitTrichromatic(float r, float g, float b){
+        // hsl values
+        // for monochromatic we just change saturation and lightness
+        // we want a darker muted
+        float[] hsl = getHSLvalues(r, g, b);
+        float h = hsl[0];
+
+        int[][] pallete = {
+                {(int) r, (int) g, (int) b},
+                hsvToRgb(h, 0.60f, 0.80f),
+                hsvToRgb((h+180+30)%360, 0.50f, 0.50f),
+                hsvToRgb((h+180)%360, 0.80f, 0.80f),
+                hsvToRgb((h+180-30)%360, 0.50f, 0.50f)
+        };
+
+        return pallete;
+        // for monochromatic we just change saturation and lightness
+        // we want a darker muted
+    }
+
+    private static int[][] getAnalogous(float r, float g, float b){
+        // hsl values
+        // for monochromatic we just change saturation and lightness
+        // we want a darker muted
+        float[] hsl = getHSLvalues(r, g, b);
+        float h = hsl[0];
+
+        int[][] pallete = {
+                {(int) r, (int) g, (int) b},
+                hsvToRgb((h+15)%360, 0.50f, 0.50f),
+                hsvToRgb((h+30)%360, 0.50f, 0.50f),
+                hsvToRgb((h+330)%360, 0.50f, 0.50f),
+                hsvToRgb((h+345)%360, 0.50f, 0.50f)
+        };
+
+        return pallete;
+        // for monochromatic we just change saturation and lightness
+        // we want a darker muted
+    }
+
+
 };
