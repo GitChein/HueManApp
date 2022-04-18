@@ -6,84 +6,93 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/rgbLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.604" />
 
     <TextView
         android:id="@+id/hexLabel"
-        android:layout_width="392dp"
-        android:layout_height="30dp"
+        android:layout_width="112dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="16dp"
         android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/nameLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.421"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rgbLabel"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintTop_toBottomOf="@+id/colorBox" />
 
     <TextView
         android:id="@+id/nameLabel"
-        android:layout_width="387dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="17dp"
+        android:layout_width="169dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="serif-monospace"
         android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/colorBox"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hexLabel"
-        app:layout_constraintVertical_bias="0.303" />
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/btnPick" />
+
+    <TextView
+        android:id="@+id/typeLabel"
+        android:layout_width="169dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="serif-monospace"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ColorType"
+        app:layout_constraintTop_toBottomOf="@+id/nameLabel" />
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="274dp"
-        android:layout_height="272dp"
-        android:layout_marginStart="69dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="69dp"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_marginTop="8dp"
         android:src="@drawable/color_wheel_0"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/colorBox"
-        android:layout_width="242dp"
-        android:layout_height="67dp"
-        android:layout_marginStart="85dp"
-        android:layout_marginEnd="85dp"
-        android:layout_marginBottom="88dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_width="108dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="31dp"
+        app:layout_constraintTop_toBottomOf="@+id/btnPick"
+        tools:layout_editor_absoluteX="37dp" />
 
     <Button
         android:id="@+id/btnPick"
-        android:layout_width="187dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="112dp"
-        android:layout_marginEnd="112dp"
+        android:layout_width="351dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
         android:text="@string/chose_image"
-        app:layout_constraintBottom_toTopOf="@+id/rgbLabel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image"
-        app:layout_constraintVertical_bias="0.524" />
+        app:layout_constraintTop_toBottomOf="@+id/image" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="66dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="31dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Name: "
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/colorBox"
+        app:layout_constraintTop_toBottomOf="@+id/btnPick" />
+
+    <TextView
+        android:id="@+id/ColorType"
+        android:layout_width="66dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Type:"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/colorBox"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
