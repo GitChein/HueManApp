@@ -13,6 +13,7 @@ public interface SavedColorDao {
     @Insert
     public void insertSavedColor(SavedColor savedColor);
 
-
+    @Query("SELECT * FROM SavedColors")
+    public Color[] loadAllSavedColors();
 
 }

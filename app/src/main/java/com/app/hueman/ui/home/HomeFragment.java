@@ -168,11 +168,13 @@ public class HomeFragment extends Fragment {
                 savedColor.type = type;
                 sc_dao.insertSavedColor(savedColor);
             }
+            if(colorDao.getName(hex) == null){
+                com.app.hueman.Color color = new com.app.hueman.Color();
+                color.hex = hex;
+                color.name = name;
+                colorDao.insertColor(color);
+            }
 
-            com.app.hueman.Color color = new com.app.hueman.Color();
-            color.hex = hex;
-            color.name = name;
-            colorDao.insertColor(color);
 
 
 
