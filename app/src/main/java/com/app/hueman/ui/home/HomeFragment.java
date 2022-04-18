@@ -27,6 +27,9 @@ import com.app.hueman.ColorDao;
 import com.app.hueman.ColorRoomDatabase;
 import com.app.hueman.DisplayPaletteActivity;
 import com.app.hueman.R;
+import com.app.hueman.SavedColor;
+import com.app.hueman.SavedColorDao;
+import com.app.hueman.SavedColorRoomDatabase;
 import com.app.hueman.databinding.FragmentHomeBinding;
 
 @SuppressWarnings("deprecation")
@@ -36,6 +39,7 @@ public class HomeFragment extends Fragment {
     private static final int REQUEST_CODE = 123;
     Button btnPick;
     Button btnPalettes;
+    Button btnSave;
     ImageView image;
     TextView hexText;
     TextView nameText;
@@ -44,6 +48,9 @@ public class HomeFragment extends Fragment {
     Bitmap bm;
     ColorRoomDatabase cdb;
     ColorDao colorDao;
+
+    SavedColorRoomDatabase sc_db;
+    SavedColorDao sc_dao;
 
 
     @SuppressLint("ClickableViewAccessibility")
@@ -55,6 +62,8 @@ public class HomeFragment extends Fragment {
         image = root.findViewById(R.id.image);
         btnPick = root.findViewById(R.id.btnPick);
         btnPalettes = (Button) root.findViewById(R.id.paletteGeneratorButton);
+        btnSave = (Button) root.findViewById(R.id.saveColorButton);
+
         hexText = root.findViewById(R.id.hexLabel);
         nameText = root.findViewById(R.id.nameLabel);
         typeText = root.findViewById(R.id.typeLabel);
@@ -63,6 +72,9 @@ public class HomeFragment extends Fragment {
         cdb = ColorRoomDatabase.getDatabase(getContext());
         Log.i("color_db", String.valueOf(getContext()));
         colorDao = cdb.colorDao();
+
+        sc_db = SavedColorRoomDatabase.getDatabase(getContext());
+        Log.i("color_db", String.valueOf(getContext()));
 
 
         image.setDrawingCacheEnabled(true);
@@ -100,11 +112,36 @@ public class HomeFragment extends Fragment {
                 }
                 return true;
         });
+
         btnPick.setOnClickListener((v) -> {
               Intent intent = new Intent();
               intent.setType("image/*");
               intent.setAction(Intent.ACTION_GET_CONTENT);
               startActivityForResult(Intent.createChooser(intent, "Choose an image"), REQUEST_CODE);
+        });
+
+        btnSave.setOnClickListener((v) -> {
+
+            sc_dao = sc_db.savedColorDao();
+            SavedColor savedColor = new SavedColor();
+
+            TextView hex_text = (TextView) root.findViewById(R.id.hexLabel);
+            String hex = hex_text.getText().toString();
+
+            TextView name_text = (TextView) root.findViewById(R.id.nameLabel);
+            String name = name_text.getText().toString();
+
+            TextView type_text = (TextView) root.findViewById(R.id.typeLabel);
+            String type = type_text.getText().toString();
+
+            if (sc_dao.getColor(hex) == null) {
+                savedColor.hex = hex;
+                savedColor.name = name;
+                savedColor.type = type;
+                sc_dao.insertSavedColor(savedColor);
+            }
+
+
         });
 
         btnPalettes.setOnClickListener((v) -> {
