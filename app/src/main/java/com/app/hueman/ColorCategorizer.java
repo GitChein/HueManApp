@@ -3,6 +3,7 @@ package com.app.hueman;
 import androidx.core.graphics.ColorUtils;
 
 import java.util.Vector;
+import android.graphics.Color;
 
 
 public class ColorCategorizer {
@@ -74,32 +75,6 @@ public class ColorCategorizer {
         if (h < 345) return "Pink";
         return "Red";
     }
-    public static int[] hsvToRgb(float hue, float saturation, float value) {
-
-        int h = (int)(hue * 6);
-        float f = hue * 6 - h;
-        float p = value * (1 - saturation);
-        float q = value * (1 - f * saturation);
-        float t = value * (1 - (1 - f) * saturation);
-
-        switch (h) {
-            case 0: return rgbToArray(value, t, p);
-            case 1: return rgbToArray(q, value, p);
-            case 2: return rgbToArray(p, value, t);
-            case 3: return rgbToArray(p, q, value);
-            case 4: return rgbToArray(t, p, value);
-            case 5: return rgbToArray(value, p, q);
-            default: throw new RuntimeException("Something went wrong when converting from HSV to RGB. Input was " + hue + ", " + saturation + ", " + value);
-        }
-    }
-
-    public static int[] rgbToArray(float r, float g, float b) {
-        int rs = (int)(r * 256);
-        int gs = (int)(g * 256);
-        int bs = (int)(b * 256);
-        int[] rgb = {rs, gs, bs};
-        return rgb;
-    }
 
     public static int[][][] getColorPalettes(float r, float g, float b) {
         int[][][] palettes = {
@@ -118,12 +93,22 @@ public class ColorCategorizer {
         float[] hsl = getHSLvalues(r, g, b);
         float h = hsl[0];
 
+        float[] hsv_1 = {h, (float)0.40, (float)0.40};
+        float[] hsv_2 = {h, (float)0.60, (float)0.60};
+        float[] hsv_3 = {h, (float)0.80, (float)0.80};
+        float[] hsv_4 = {h, (float)0.95, (float)0.95};
+
+        int c1 = Color.HSVToColor(hsv_1);
+        int c2 = Color.HSVToColor(hsv_2);
+        int c3 = Color.HSVToColor(hsv_3);
+        int c4 = Color.HSVToColor(hsv_4);
+
         int[][] pallete = {
                 {(int) r, (int) g, (int) b},
-                hsvToRgb(h, 0.10f, 0.10f),
-                hsvToRgb(h, 0.50f, 0.50f),
-                hsvToRgb(h, 0.60f, 0.75f),
-                hsvToRgb(h, 0.90f, 0.90f)
+                {Color.red(c1),Color.green(c1), Color.blue(c1)},
+                {Color.red(c2),Color.green(c2), Color.blue(c2)},
+                {Color.red(c3),Color.green(c3), Color.blue(c3)},
+                {Color.red(c4),Color.green(c4), Color.blue(c4)}
         };
 
         return pallete;
@@ -138,12 +123,22 @@ public class ColorCategorizer {
         float[] hsl = getHSLvalues(r, g, b);
         float h = hsl[0];
 
+        float[] hsv_1 = {h, 0.60f, 0.80f};
+        float[] hsv_2 = {(h+180)%360, 0.50f, 0.45f};
+        float[] hsv_3 = {(h+180)%360, 0.80f, 0.80f};
+        float[] hsv_4 = {(h+180)%360, 0.85f, 0.750f};
+
+        int c1 = Color.HSVToColor(hsv_1);
+        int c2 = Color.HSVToColor(hsv_2);
+        int c3 = Color.HSVToColor(hsv_3);
+        int c4 = Color.HSVToColor(hsv_4);
+
         int[][] pallete = {
                 {(int) r, (int) g, (int) b},
-                hsvToRgb(h, 0.60f, 0.80f),
-                hsvToRgb(h, 0.50f, 0.45f),
-                hsvToRgb((h+180)%360, 0.80f, 0.80f),
-                hsvToRgb((h+180)%360, 0.75f, 0.60f)
+                {Color.red(c1),Color.green(c1), Color.blue(c1)},
+                {Color.red(c2),Color.green(c2), Color.blue(c2)},
+                {Color.red(c3),Color.green(c3), Color.blue(c3)},
+                {Color.red(c4),Color.green(c4), Color.blue(c4)}
         };
 
         return pallete;
@@ -158,12 +153,22 @@ public class ColorCategorizer {
         float[] hsl = getHSLvalues(r, g, b);
         float h = hsl[0];
 
+        float[] hsv_1 = {(h+180+50)%360, 0.60f, 0.80f};
+        float[] hsv_2 = {(h+180+50)%360, 0.80f, 0.50f};
+        float[] hsv_3 = {(h+180)%360, 0.80f, 0.80f};
+        float[] hsv_4 = {(h+180-50)%360, 0.80f, 0.50f};
+
+        int c1 = Color.HSVToColor(hsv_1);
+        int c2 = Color.HSVToColor(hsv_2);
+        int c3 = Color.HSVToColor(hsv_3);
+        int c4 = Color.HSVToColor(hsv_4);
+
         int[][] pallete = {
                 {(int) r, (int) g, (int) b},
-                hsvToRgb(h, 0.60f, 0.80f),
-                hsvToRgb((h+180+30)%360, 0.50f, 0.50f),
-                hsvToRgb((h+180)%360, 0.80f, 0.80f),
-                hsvToRgb((h+180-30)%360, 0.50f, 0.50f)
+                {Color.red(c1),Color.green(c1), Color.blue(c1)},
+                {Color.red(c2),Color.green(c2), Color.blue(c2)},
+                {Color.red(c3),Color.green(c3), Color.blue(c3)},
+                {Color.red(c4),Color.green(c4), Color.blue(c4)}
         };
 
         return pallete;
@@ -178,12 +183,22 @@ public class ColorCategorizer {
         float[] hsl = getHSLvalues(r, g, b);
         float h = hsl[0];
 
+        float[] hsv_1 = {(h+45)%360, 0.90f, 0.50f};
+        float[] hsv_2 = {(h+60)%360, 0.90f, 0.90f};
+        float[] hsv_3 = {(h+310)%360, 0.90f, 0.90f};
+        float[] hsv_4 = {(h+300)%360, 0.90f, 0.90f};
+
+        int c1 = Color.HSVToColor(hsv_1);
+        int c2 = Color.HSVToColor(hsv_2);
+        int c3 = Color.HSVToColor(hsv_3);
+        int c4 = Color.HSVToColor(hsv_4);
+
         int[][] pallete = {
                 {(int) r, (int) g, (int) b},
-                hsvToRgb((h+15)%360, 0.50f, 0.50f),
-                hsvToRgb((h+30)%360, 0.50f, 0.50f),
-                hsvToRgb((h+330)%360, 0.50f, 0.50f),
-                hsvToRgb((h+345)%360, 0.50f, 0.50f)
+                {Color.red(c1),Color.green(c1), Color.blue(c1)},
+                {Color.red(c2),Color.green(c2), Color.blue(c2)},
+                {Color.red(c3),Color.green(c3), Color.blue(c3)},
+                {Color.red(c4),Color.green(c4), Color.blue(c4)}
         };
 
         return pallete;

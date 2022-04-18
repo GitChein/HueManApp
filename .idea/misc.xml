@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/19155/Desktop/HueManApp/app/src/main/res/layout/activity_display_palette.xml" value="0.2" />
         <entry key="..\:/Users/19155/Desktop/HueManApp/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/19155/Desktop/HueManApp/app/src/main/res/layout/fragment_dashboard.xml" value="0.11302083333333333" />
         <entry key="..\:/Users/19155/Desktop/HueManApp/app/src/main/res/layout/fragment_home.xml" value="0.18181818181818182" />
+        <entry key="..\:/Users/19155/Desktop/HueManApp/app/src/main/res/layout/palette_fragment.xml" value="0.2513586956521739" />
       </map>
     </option>
   </component>
