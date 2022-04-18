@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Button;
 import android.app.Activity;
+
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -78,8 +80,8 @@ public class HomeFragment extends Fragment {
                     int r = Color.red(rgb);
                     int g = Color.green(rgb);
                     int b = Color.blue(rgb);
-
                     colorBox.setBackgroundColor(Color.rgb(r, g, b));
+
                     typeText.setText(ColorCategorizer.getColorCategory(r,g,b));
 
                     String hexStr = Integer.toHexString(rgb);
@@ -109,10 +111,15 @@ public class HomeFragment extends Fragment {
             Intent intent = new Intent(v.getContext(), DisplayPaletteActivity.class);
             TextView hex = (TextView) root.findViewById(R.id.hexLabel);
             String message = hex.getText().toString();
-            intent.putExtra("key", message);
+            intent.putExtra("hex", message);
+            TextView name = (TextView) root.findViewById(R.id.nameLabel);
+            message = name.getText().toString();
+            intent.putExtra("name", message);
+            TextView type = (TextView) root.findViewById(R.id.typeLabel);
+            message = type.getText().toString();
+            intent.putExtra("type", message);
             startActivity(intent);
         });
-
 
         return root;
     }

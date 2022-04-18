@@ -5,10 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Html;
+import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
+
+import com.app.hueman.ui.home.HomeFragment;
+
+import java.util.ArrayList;
 
 public class DisplayPaletteActivity extends AppCompatActivity {
 
+    TextView hexLabel;
+    TextView nameLabel;
+    TextView typeLabel;
     TextView hexText;
 
     TextView p11;
@@ -31,17 +41,22 @@ public class DisplayPaletteActivity extends AppCompatActivity {
     TextView p43;
     TextView p44;
     TextView p45;
-
+    ArrayList<Button> btns = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_palette);
 
-        hexText =  findViewById(R.id.pHexText);
+        hexLabel =  findViewById(R.id.pHexText);
+        nameLabel = findViewById(R.id.pNameText);
+        typeLabel = findViewById(R.id.pTypeText);
+        hexText = findViewById(R.id.hexText);
 
         Intent intent = getIntent();
-        String hex = intent.getStringExtra("key");
+        String hex = intent.getStringExtra("hex");
+        String name = intent.getStringExtra("name");
+        String type = intent.getStringExtra("type");
 
         int r = Integer.valueOf( hex.substring( 1, 3 ), 16 );
         int g = Integer.valueOf( hex.substring( 3, 5 ), 16 );
@@ -97,7 +112,29 @@ public class DisplayPaletteActivity extends AppCompatActivity {
         p44.setBackgroundColor(Color.rgb(p[3][3][0], p[3][3][1], p[3][3][2]));
         p45.setBackgroundColor(Color.rgb(p[3][4][0], p[3][4][1], p[3][4][2]));
 
-        hexText.setText(hex);
+        btns.add(findViewById(R.id.saveBtn1));
+        btns.add(findViewById(R.id.saveBtn2));
+        btns.add(findViewById(R.id.saveBtn3));
+        btns.add(findViewById(R.id.saveBtn4));
 
+        for (Button btn : btns) {
+            btn.setBackgroundColor(Color.BLACK);
+            btn.setTextColor(Color.WHITE);
+        }
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        hexLabel.setBackgroundColor(Color.rgb(r, g, b));
+        hexText.setText(hex);
+        nameLabel.setText(name);
+        typeLabel.setText(type);
+
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(myIntent);
+        return true;
     }
 }
