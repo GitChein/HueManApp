@@ -43,6 +43,7 @@ public class HomeFragment extends Fragment {
     ImageView image;
     TextView hexText;
     TextView nameText;
+    TextView nameEdit;
     TextView typeText;
     TextView colorBox;
     Bitmap bm;
@@ -65,7 +66,6 @@ public class HomeFragment extends Fragment {
         btnSave = (Button) root.findViewById(R.id.saveColorButton);
 
         hexText = root.findViewById(R.id.hexLabel);
-        nameText = root.findViewById(R.id.nameLabel);
         typeText = root.findViewById(R.id.typeLabel);
         colorBox = root.findViewById(R.id.colorBox);
 
@@ -93,7 +93,6 @@ public class HomeFragment extends Fragment {
                     int g = Color.green(rgb);
                     int b = Color.blue(rgb);
                     colorBox.setBackgroundColor(Color.rgb(r, g, b));
-
                     typeText.setText(ColorCategorizer.getColorCategory(r,g,b));
 
                     String hexStr = Integer.toHexString(rgb);
@@ -102,12 +101,17 @@ public class HomeFragment extends Fragment {
                         hexText.setText(hexStr);
                     }
 
+
+                    nameText = root.findViewById(R.id.nameLabel);
+                    nameEdit = root.findViewById(R.id.nameEdit);
+                    nameEdit.setText("");
+                    nameText.setText("");
                     String colorName = colorDao.getName(hexStr);
                     if (colorName != null) {
                         nameText.setText(colorName);
                     }
                     else{
-                        nameText.setText("Name not found");
+                        nameEdit.setText("Enter a Name!");
                     }
                 }
                 return true;

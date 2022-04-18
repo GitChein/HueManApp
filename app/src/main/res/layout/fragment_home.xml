@@ -31,6 +31,21 @@
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/btnPick" />
 
+    <EditText
+        android:id="@+id/nameEdit"
+        android:layout_width="169dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="serif-monospace"
+        android:text="Enter a Name!"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/btnPick" />
+
     <TextView
         android:id="@+id/typeLabel"
         android:layout_width="169dp"
