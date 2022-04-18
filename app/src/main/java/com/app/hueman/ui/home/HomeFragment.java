@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Button;
@@ -62,8 +63,11 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
         image = root.findViewById(R.id.image);
         btnPick = root.findViewById(R.id.btnPick);
+
         btnPalettes = (Button) root.findViewById(R.id.paletteGeneratorButton);
         btnSave = (Button) root.findViewById(R.id.saveColorButton);
+        btnPalettes.setEnabled(false);
+        btnSave.setEnabled(false);
 
         hexText = root.findViewById(R.id.hexLabel);
         typeText = root.findViewById(R.id.typeLabel);
@@ -80,6 +84,8 @@ public class HomeFragment extends Fragment {
         image.setDrawingCacheEnabled(true);
         image.buildDrawingCache(true);
         image.setOnTouchListener((view, motionEvent) -> {
+                btnPalettes.setEnabled(true);
+                btnSave.setEnabled(true);
                 if (motionEvent.getX() < 0 || motionEvent.getY() < 0 ||
                     motionEvent.getX() >= view.getWidth() || motionEvent.getY() >= view.getHeight()) {
                     return true;
@@ -127,23 +133,47 @@ public class HomeFragment extends Fragment {
         btnSave.setOnClickListener((v) -> {
 
             sc_dao = sc_db.savedColorDao();
-            SavedColor savedColor = new SavedColor();
+
+
 
             TextView hex_text = (TextView) root.findViewById(R.id.hexLabel);
             String hex = hex_text.getText().toString();
 
             TextView name_text = (TextView) root.findViewById(R.id.nameLabel);
-            String name = name_text.getText().toString();
+            String t_name = name_text.getText().toString();
+
+            EditText name_edit = (EditText) root.findViewById(R.id.nameEdit);
+            String e_name = name_edit.getText().toString();
 
             TextView type_text = (TextView) root.findViewById(R.id.typeLabel);
             String type = type_text.getText().toString();
 
+            String name;
+            if(t_name == ""){
+                if(e_name == "Enter a Name!" || e_name == "") {
+                    name = "No Name";
+                }
+                else{
+                    name = e_name;
+                }
+            }
+            else{
+                name = t_name;
+            }
+
+            SavedColor savedColor = new SavedColor();
             if (sc_dao.getColor(hex) == null) {
                 savedColor.hex = hex;
                 savedColor.name = name;
                 savedColor.type = type;
                 sc_dao.insertSavedColor(savedColor);
             }
+
+            com.app.hueman.Color color = new com.app.hueman.Color();
+            color.hex = hex;
+            color.name = name;
+            colorDao.insertColor(color);
+
 
 
         });
