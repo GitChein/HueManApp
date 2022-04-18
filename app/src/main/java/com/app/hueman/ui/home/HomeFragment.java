@@ -32,6 +32,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private static final int REQUEST_CODE = 123;
     Button btnPick;
+    Button btnPalettes;
     ImageView image;
     TextView hexText;
     TextView nameText;
@@ -91,7 +92,6 @@ public class HomeFragment extends Fragment {
                     }
                     else{
                         nameText.setText("Name not found");
-
                     }
 
                 }
