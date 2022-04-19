@@ -1,4 +1,4 @@
-package com.app.hueman.ui.dashboard;
+package com.app.hueman.ui.palettes;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

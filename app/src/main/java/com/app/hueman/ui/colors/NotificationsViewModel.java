@@ -1,4 +1,4 @@
-package com.app.hueman.ui.notifications;
+package com.app.hueman.ui.colors;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

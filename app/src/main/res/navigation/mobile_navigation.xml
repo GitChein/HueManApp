@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_palettes"
-        android:name="com.app.hueman.ui.dashboard.DashboardFragment"
+        android:name="com.app.hueman.ui.palettes.PalettesFragment"
         android:label="Saved Palettes"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_palettes" />
 
     <fragment
-        android:id="@+id/navigation_colors"
-        android:name="com.app.hueman.ui.notifications.NotificationsFragment"
+        android:id="@+id/navigation_savedcolors"
+        android:name="com.app.hueman.ui.colors.SavedcolorsFragment"
         android:label="Saved Colors"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_savedColors" />
 </navigation>

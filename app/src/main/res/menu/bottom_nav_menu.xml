@@ -12,7 +12,7 @@
         android:title="Saved Palettes" />
 
     <item
-        android:id="@+id/navigation_colors"
+        android:id="@+id/navigation_savedcolors"
         android:icon="@drawable/savedicon"
         android:title="Saved Colors" />
 
