@@ -38,15 +38,17 @@
         android:id="@+id/clr1"
         android:layout_width="83dp"
         android:layout_height="63dp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/paletteName"
         android:layout_width="414dp"
         android:layout_height="32dp"
         android:layout_marginTop="2dp"
-        android:textAlignment="center"
+        android:fontFamily="serif-monospace"
+        android:textAlignment="viewStart"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
