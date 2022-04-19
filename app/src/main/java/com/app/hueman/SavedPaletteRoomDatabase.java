@@ -10,7 +10,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Database(entities = {SavedPalette.class},
-        version = 2,
+        version = 3,
         exportSchema = true)
 public abstract class SavedPaletteRoomDatabase extends RoomDatabase {
 

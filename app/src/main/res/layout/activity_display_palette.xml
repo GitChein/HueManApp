@@ -148,6 +148,64 @@
         app:layout_constraintStart_toEndOf="@+id/p21"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/nameEdit1"
+        android:layout_width="169dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="24dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="serif-monospace"
+        android:text="Enter a Name!"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p12" />
+
+    <EditText
+        android:id="@+id/nameEdit2"
+        android:layout_width="169dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="20dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="serif-monospace"
+        android:text="Enter a Name!"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p22" />
+
+    <EditText
+        android:id="@+id/nameEdit3"
+        android:layout_width="169dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="serif-monospace"
+        android:text="Enter a Name!"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p32" />
+
+    <EditText
+        android:id="@+id/nameEdit4"
+        android:layout_width="169dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="serif-monospace"
+        android:text="Enter a Name!"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/p42" />
+
     <TextView
         android:id="@+id/p21"
         android:layout_width="55dp"

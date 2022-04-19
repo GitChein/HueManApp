@@ -23,6 +23,12 @@ public class DisplayPaletteActivity extends AppCompatActivity {
     TextView typeLabel;
     TextView hexText;
 
+    EditText name1;
+    EditText name2;
+    EditText name3;
+    EditText name4;
+
+
     SavedPaletteRoomDatabase sp_db;
     SavedPaletteDao sp_dao;
 
@@ -57,6 +63,12 @@ public class DisplayPaletteActivity extends AppCompatActivity {
         nameLabel = findViewById(R.id.pNameText);
         typeLabel = findViewById(R.id.pTypeText);
         hexText = findViewById(R.id.hexText);
+
+        name1 = findViewById(R.id.nameEdit1);
+        name2 = findViewById(R.id.nameEdit2);
+        name3 = findViewById(R.id.nameEdit3);
+        name4 = findViewById(R.id.nameEdit4);
+
 
         Intent intent = getIntent();
         String hex = intent.getStringExtra("hex");
@@ -133,49 +145,88 @@ public class DisplayPaletteActivity extends AppCompatActivity {
 
         Button btn = btns.get(0);
         btn.setOnClickListener((v)->{
-            SavedPalette savedPalette = new SavedPalette();
-            savedPalette.hex1 = Integer.toHexString(Color.rgb(p[0][0][0], p[0][0][1], p[0][0][2]));
-            savedPalette.hex2 = Integer.toHexString(Color.rgb(p[0][1][0], p[0][1][1], p[0][1][2]));
-            savedPalette.hex3 = Integer.toHexString(Color.rgb(p[0][2][0], p[0][2][1], p[0][2][2]));
-            savedPalette.hex4 = Integer.toHexString(Color.rgb(p[0][3][0], p[0][3][1], p[0][3][2]));
-            savedPalette.hex5 = Integer.toHexString(Color.rgb(p[0][4][0], p[0][4][1], p[0][4][2]));
+            SavedPalette sp = new SavedPalette();
+            sp.hex1 = Integer.toHexString(Color.rgb(p[0][0][0], p[0][0][1], p[0][0][2]));
+            sp.hex2 = Integer.toHexString(Color.rgb(p[0][1][0], p[0][1][1], p[0][1][2]));
+            sp.hex3 = Integer.toHexString(Color.rgb(p[0][2][0], p[0][2][1], p[0][2][2]));
+            sp.hex4 = Integer.toHexString(Color.rgb(p[0][3][0], p[0][3][1], p[0][3][2]));
+            sp.hex5 = Integer.toHexString(Color.rgb(p[0][4][0], p[0][4][1], p[0][4][2]));
 
-            sp_dao.insertSavedPalette(savedPalette);
+
+            if(name1.getText().toString() != "Enter a Name!"){
+                sp.name = name1.getText().toString();
+            }
+            else{
+                sp.name = "Color Palette " + Integer.toString((sp_dao.loadAllSavedPalettes()).length);
+            }
+
+            if(sp_dao.loadSavedPalette(sp.hex1,sp.hex2, sp.hex3, sp.hex4, sp.hex5) == null){
+                sp_dao.insertSavedPalette(sp);
+            }
+
         });
 
         Button btn1 = btns.get(1);
         btn1.setOnClickListener((v)->{
-            SavedPalette savedPalette = new SavedPalette();
-            savedPalette.hex1 = Integer.toHexString(Color.rgb(p[1][0][0], p[1][0][1], p[1][0][2]));
-            savedPalette.hex2 = Integer.toHexString(Color.rgb(p[1][1][0], p[1][1][1], p[1][1][2]));
-            savedPalette.hex3 = Integer.toHexString(Color.rgb(p[1][2][0], p[1][2][1], p[1][2][2]));
-            savedPalette.hex4 = Integer.toHexString(Color.rgb(p[1][3][0], p[1][3][1], p[1][3][2]));
-            savedPalette.hex5 = Integer.toHexString(Color.rgb(p[1][4][0], p[1][4][1], p[1][4][2]));
+            SavedPalette sp = new SavedPalette();
+            sp.hex1 = Integer.toHexString(Color.rgb(p[1][0][0], p[1][0][1], p[1][0][2]));
+            sp.hex2 = Integer.toHexString(Color.rgb(p[1][1][0], p[1][1][1], p[1][1][2]));
+            sp.hex3 = Integer.toHexString(Color.rgb(p[1][2][0], p[1][2][1], p[1][2][2]));
+            sp.hex4 = Integer.toHexString(Color.rgb(p[1][3][0], p[1][3][1], p[1][3][2]));
+            sp.hex5 = Integer.toHexString(Color.rgb(p[1][4][0], p[1][4][1], p[1][4][2]));
 
-            sp_dao.insertSavedPalette(savedPalette);
+            if(name2.getText().toString() != "Enter a Name!"){
+                sp.name = name2.getText().toString();
+            }
+            else{
+                sp.name = "Color Palette " + Integer.toString((sp_dao.loadAllSavedPalettes()).length);
+            }
+
+            if(sp_dao.loadSavedPalette(sp.hex1,sp.hex2, sp.hex3, sp.hex4, sp.hex5) == null){
+                sp_dao.insertSavedPalette(sp);
+            }
         });
 
         Button btn2 = btns.get(2);
         btn2.setOnClickListener((v)->{
-            SavedPalette savedPalette = new SavedPalette();
-            savedPalette.hex1 = Integer.toHexString(Color.rgb(p[2][0][0], p[2][0][1], p[2][0][2]));
-            savedPalette.hex2 = Integer.toHexString(Color.rgb(p[2][1][0], p[2][1][1], p[2][1][2]));
-            savedPalette.hex3 = Integer.toHexString(Color.rgb(p[2][2][0], p[2][2][1], p[2][2][2]));
-            savedPalette.hex4 = Integer.toHexString(Color.rgb(p[2][3][0], p[2][3][1], p[2][3][2]));
-            savedPalette.hex5 = Integer.toHexString(Color.rgb(p[2][4][0], p[2][4][1], p[2][4][2]));
+            SavedPalette sp = new SavedPalette();
+            sp.hex1 = Integer.toHexString(Color.rgb(p[2][0][0], p[2][0][1], p[2][0][2]));
+            sp.hex2 = Integer.toHexString(Color.rgb(p[2][1][0], p[2][1][1], p[2][1][2]));
+            sp.hex3 = Integer.toHexString(Color.rgb(p[2][2][0], p[2][2][1], p[2][2][2]));
+            sp.hex4 = Integer.toHexString(Color.rgb(p[2][3][0], p[2][3][1], p[2][3][2]));
+            sp.hex5 = Integer.toHexString(Color.rgb(p[2][4][0], p[2][4][1], p[2][4][2]));
 
-            sp_dao.insertSavedPalette(savedPalette);
+            if(name2.getText().toString() != "Enter a Name!"){
+                sp.name = name2.getText().toString();
+            }
+            else{
+                sp.name = "Color Palette " + Integer.toString((sp_dao.loadAllSavedPalettes()).length);
+            }
+
+            if(sp_dao.loadSavedPalette(sp.hex1,sp.hex2, sp.hex3, sp.hex4, sp.hex5) == null){
+                sp_dao.insertSavedPalette(sp);
+            }
         });
 
         Button btn3 = btns.get(3);
         btn3.setOnClickListener((v)->{
-            SavedPalette savedPalette = new SavedPalette();
-            savedPalette.hex1 = Integer.toHexString(Color.rgb(p[3][0][0], p[3][0][1], p[3][0][2]));
-            savedPalette.hex2 = Integer.toHexString(Color.rgb(p[3][1][0], p[3][1][1], p[3][1][2]));
-            savedPalette.hex3 = Integer.toHexString(Color.rgb(p[3][2][0], p[3][2][1], p[3][2][2]));
-            savedPalette.hex4 = Integer.toHexString(Color.rgb(p[3][3][0], p[3][3][1], p[3][3][2]));
-            savedPalette.hex5 = Integer.toHexString(Color.rgb(p[3][4][0], p[3][4][1], p[3][4][2]));
-            sp_dao.insertSavedPalette(savedPalette);
+            SavedPalette sp = new SavedPalette();
+            sp.hex1 = Integer.toHexString(Color.rgb(p[3][0][0], p[3][0][1], p[3][0][2]));
+            sp.hex2 = Integer.toHexString(Color.rgb(p[3][1][0], p[3][1][1], p[3][1][2]));
+            sp.hex3 = Integer.toHexString(Color.rgb(p[3][2][0], p[3][2][1], p[3][2][2]));
+            sp.hex4 = Integer.toHexString(Color.rgb(p[3][3][0], p[3][3][1], p[3][3][2]));
+            sp.hex5 = Integer.toHexString(Color.rgb(p[3][4][0], p[3][4][1], p[3][4][2]));
+
+            if(name2.getText().toString() != "Enter a Name!"){
+                sp.name = name2.getText().toString();
+            }
+            else{
+                sp.name = "Color Palette " + Integer.toString((sp_dao.loadAllSavedPalettes()).length);
+            }
+
+            if(sp_dao.loadSavedPalette(sp.hex1,sp.hex2, sp.hex3, sp.hex4, sp.hex5) == null){
+                sp_dao.insertSavedPalette(sp);
+            }
         });
 
 

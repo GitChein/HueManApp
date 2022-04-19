@@ -1,0 +1,70 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "537df67a0ce330bc43e5cb67e3e195ee",
+    "entities": [
+      {
+        "tableName": "SavedPalettes",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT, `hex1` TEXT, `hex2` TEXT, `hex3` TEXT, `hex4` TEXT, `hex5` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hex1",
+            "columnName": "hex1",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hex2",
+            "columnName": "hex2",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hex3",
+            "columnName": "hex3",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hex4",
+            "columnName": "hex4",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hex5",
+            "columnName": "hex5",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '537df67a0ce330bc43e5cb67e3e195ee')"
+    ]
+  }
+}

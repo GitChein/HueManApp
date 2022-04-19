@@ -10,6 +10,9 @@ public class SavedPalette {
     @PrimaryKey(autoGenerate = true)
     public int id;
 
+    @ColumnInfo(name = "name")
+    public String name;
+
     @ColumnInfo(name = "hex1")
     public String hex1;
 
