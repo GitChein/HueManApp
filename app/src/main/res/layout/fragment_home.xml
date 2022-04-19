@@ -40,7 +40,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
         android:fontFamily="serif-monospace"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/textView"
