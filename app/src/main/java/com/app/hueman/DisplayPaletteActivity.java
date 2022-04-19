@@ -153,11 +153,11 @@ public class DisplayPaletteActivity extends AppCompatActivity {
             sp.hex5 = Integer.toHexString(Color.rgb(p[0][4][0], p[0][4][1], p[0][4][2]));
 
 
-            if(name1.getText().toString() != "Enter a Name!"){
-                sp.name = name1.getText().toString();
+            if(name1.getText().toString().equals("Enter a Name!") || name1.getText().toString().equals("")){
+                sp.name = "Color Palette " + Integer.toString((sp_dao.loadAllSavedPalettes()).length);
             }
             else{
-                sp.name = "Color Palette " + Integer.toString((sp_dao.loadAllSavedPalettes()).length);
+                sp.name = name1.getText().toString();
             }
 
             if(sp_dao.loadSavedPalette(sp.hex1,sp.hex2, sp.hex3, sp.hex4, sp.hex5).length == 0){
@@ -175,7 +175,7 @@ public class DisplayPaletteActivity extends AppCompatActivity {
             sp.hex4 = Integer.toHexString(Color.rgb(p[1][3][0], p[1][3][1], p[1][3][2]));
             sp.hex5 = Integer.toHexString(Color.rgb(p[1][4][0], p[1][4][1], p[1][4][2]));
 
-            if(name2.getText().toString() != "Enter a Name!"){
+            if(name2.getText().toString() != "Enter a Name!" || name2.getText().toString() != ""){
                 sp.name = name2.getText().toString();
             }
             else{
@@ -196,8 +196,8 @@ public class DisplayPaletteActivity extends AppCompatActivity {
             sp.hex4 = Integer.toHexString(Color.rgb(p[2][3][0], p[2][3][1], p[2][3][2]));
             sp.hex5 = Integer.toHexString(Color.rgb(p[2][4][0], p[2][4][1], p[2][4][2]));
 
-            if(name2.getText().toString() != "Enter a Name!"){
-                sp.name = name2.getText().toString();
+            if(name3.getText().toString() != "Enter a Name!" || name3.getText().toString() != ""){
+                sp.name = name3.getText().toString();
             }
             else{
                 sp.name = "Color Palette " + Integer.toString((sp_dao.loadAllSavedPalettes()).length);
@@ -217,8 +217,8 @@ public class DisplayPaletteActivity extends AppCompatActivity {
             sp.hex4 = Integer.toHexString(Color.rgb(p[3][3][0], p[3][3][1], p[3][3][2]));
             sp.hex5 = Integer.toHexString(Color.rgb(p[3][4][0], p[3][4][1], p[3][4][2]));
 
-            if(name2.getText().toString() != "Enter a Name!"){
-                sp.name = name2.getText().toString();
+            if(name4.getText().toString() != "Enter a Name!" || name4.getText().toString() != ""){
+                sp.name = name4.getText().toString();
             }
             else{
                 sp.name = "Color Palette " + Integer.toString((sp_dao.loadAllSavedPalettes()).length);

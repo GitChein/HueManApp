@@ -149,8 +149,8 @@ public class HomeFragment extends Fragment {
 
             String name;
             if(t_name == ""){
-                if(e_name == "Enter a Name!" || e_name == "") {
-                    name = "No Name";
+                if(e_name.equals("Enter a Name!") || e_name.equals("")) {
+                    name = "Color " + Integer.toString(sc_dao.loadAllSavedColors().length);
                 }
                 else{
                     name = e_name;

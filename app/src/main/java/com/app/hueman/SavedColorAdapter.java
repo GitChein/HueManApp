@@ -32,7 +32,13 @@ public class SavedColorAdapter extends ArrayAdapter<SavedColorItem> {
         TextView colorLabel = listItem.findViewById(R.id.color_item);
         colorLabel.setBackgroundColor(Color.parseColor(item.getHexColor()));
 
-        colorLabel.setText(item.getName() + "     " + item.getHexColor());
+        String spaces = " ";
+        for(int i = item.getName().length(); i < 13; i++){
+            spaces += " ";
+        }
+
+        colorLabel.setText(item.getName() + spaces + item.getHexColor());
+
 
         return listItem;
     }
