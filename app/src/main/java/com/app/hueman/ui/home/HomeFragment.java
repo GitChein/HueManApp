@@ -37,9 +37,11 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private static final int REQUEST_CODE = 123;
+    private static final int CAMERA_REQUEST = 100;
     Button btnPick;
     Button btnPalettes;
     Button btnSave;
+    Button camBtn;
     ImageView image;
     TextView hexText;
     TextView nameText;
@@ -62,6 +64,7 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
         image = root.findViewById(R.id.image);
         btnPick = root.findViewById(R.id.btnPick);
+        camBtn = root.findViewById(R.id.camBtn);
 
         btnPalettes = (Button) root.findViewById(R.id.paletteGeneratorButton);
         btnSave = (Button) root.findViewById(R.id.saveColorButton);
@@ -128,6 +131,13 @@ public class HomeFragment extends Fragment {
               intent.setAction(Intent.ACTION_GET_CONTENT);
               startActivityForResult(Intent.createChooser(intent, "Choose an image"), REQUEST_CODE);
         });
+
+        camBtn.setOnClickListener((v) -> {
+            Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(cameraIntent, CAMERA_REQUEST);
+        });
+
+
 
         btnSave.setOnClickListener((v) -> {
 
@@ -202,6 +212,12 @@ public class HomeFragment extends Fragment {
         Uri imageData = data.getData();
         image.setImageURI(imageData);
         bm = image.getDrawingCache();
+      }
+      if(reqCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK && data != null){
+          Bundle extras = data.getExtras();
+          Bitmap imageBitmap = (Bitmap) extras.get("data");
+          image.setImageBitmap(imageBitmap);
+          bm = image.getDrawingCache();
       }
     }
 
