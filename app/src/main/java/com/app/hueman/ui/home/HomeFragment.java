@@ -141,7 +141,7 @@ public class HomeFragment extends Fragment {
             TextView name_text = (TextView) root.findViewById(R.id.nameLabel);
             String t_name = name_text.getText().toString();
 
-            EditText name_edit = (EditText) root.findViewById(R.id.nameEdit1);
+            EditText name_edit = (EditText) root.findViewById(R.id.nameEdit);
             String e_name = name_edit.getText().toString();
 
             TextView type_text = (TextView) root.findViewById(R.id.typeLabel);

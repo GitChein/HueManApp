@@ -160,7 +160,7 @@ public class DisplayPaletteActivity extends AppCompatActivity {
                 sp.name = "Color Palette " + Integer.toString((sp_dao.loadAllSavedPalettes()).length);
             }
 
-            if(sp_dao.loadSavedPalette(sp.hex1,sp.hex2, sp.hex3, sp.hex4, sp.hex5) == null){
+            if(sp_dao.loadSavedPalette(sp.hex1,sp.hex2, sp.hex3, sp.hex4, sp.hex5).length == 0){
                 sp_dao.insertSavedPalette(sp);
             }
 
@@ -182,7 +182,7 @@ public class DisplayPaletteActivity extends AppCompatActivity {
                 sp.name = "Color Palette " + Integer.toString((sp_dao.loadAllSavedPalettes()).length);
             }
 
-            if(sp_dao.loadSavedPalette(sp.hex1,sp.hex2, sp.hex3, sp.hex4, sp.hex5) == null){
+            if(sp_dao.loadSavedPalette(sp.hex1,sp.hex2, sp.hex3, sp.hex4, sp.hex5).length == 0){
                 sp_dao.insertSavedPalette(sp);
             }
         });
@@ -203,7 +203,7 @@ public class DisplayPaletteActivity extends AppCompatActivity {
                 sp.name = "Color Palette " + Integer.toString((sp_dao.loadAllSavedPalettes()).length);
             }
 
-            if(sp_dao.loadSavedPalette(sp.hex1,sp.hex2, sp.hex3, sp.hex4, sp.hex5) == null){
+            if(sp_dao.loadSavedPalette(sp.hex1,sp.hex2, sp.hex3, sp.hex4, sp.hex5).length == 0){
                 sp_dao.insertSavedPalette(sp);
             }
         });
@@ -224,7 +224,7 @@ public class DisplayPaletteActivity extends AppCompatActivity {
                 sp.name = "Color Palette " + Integer.toString((sp_dao.loadAllSavedPalettes()).length);
             }
 
-            if(sp_dao.loadSavedPalette(sp.hex1,sp.hex2, sp.hex3, sp.hex4, sp.hex5) == null){
+            if(sp_dao.loadSavedPalette(sp.hex1,sp.hex2, sp.hex3, sp.hex4, sp.hex5) .length == 0){
                 sp_dao.insertSavedPalette(sp);
             }
         });
