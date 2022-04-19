@@ -7,6 +7,18 @@
     tools:context=".ui.home.HomeFragment">
 
 
+    <Button
+        android:id="@+id/camBtn"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/camera"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image"
+        tools:text="camera" />
+
     <TextView
         android:id="@+id/hexLabel"
         android:layout_width="112dp"
@@ -80,11 +92,12 @@
 
     <Button
         android:id="@+id/btnPick"
-        android:layout_width="351dp"
-        android:layout_height="50dp"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:text="@string/chose_image"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image" />
 
@@ -134,4 +147,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/hexLabel"
         app:layout_constraintTop_toBottomOf="@+id/paletteGeneratorButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

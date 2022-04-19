@@ -4,4 +4,5 @@
     <string name="title_dashboard">Saved</string>
     <string name="title_notifications">Settings</string>
     <string name="chose_image">CHANGE IMAGE</string>
+    <string name="camera">camera</string>
 </resources>
